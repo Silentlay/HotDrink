@@ -18,15 +18,16 @@ public class HotDrinkVendingMachine implements VendingMachine {
     }
 
     // Перегруженный метод для получения напитка по имени, объему и температуре
-    public HotDrink getProduct(String name, int volume, int temperature) {
+    public String getProduct(String name, int volume, int temperature) {
         for (Product product : productList) {
-            if (product instanceof HotDrink) {
-                HotDrink hotDrink = (HotDrink) product;
-                if (hotDrink.getName().equals(name) && hotDrink.getVolume() == volume && hotDrink.getTemperature() == temperature) {
-                    return hotDrink;
+            if (product instanceof HotDrinkHeir hotDrinkHeir) {
+                if (hotDrinkHeir.getName().equals(name) &&
+                        hotDrinkHeir.getVolume() == volume &&
+                        hotDrinkHeir.getTemperature() == temperature) {
+                    return hotDrinkHeir.toString();
                 }
             }
         }
-        return null;
+        return "Продукт не найден: " + name + ", " + volume + " мл, " + temperature + " C";
     }
 }
